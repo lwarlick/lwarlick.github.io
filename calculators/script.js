@@ -1,20 +1,59 @@
-//add units to form that change based on slider use divs and change innerhtml in changesystem()
-//rounding error on 1rmcalc
+//publish to heroku/github pages
 metric=false;
+sessionStorage.setItem('metric', metric);
 result=1;
 maxresult=1;
 
-function changeSystem(){
+function changeSystem1RM(){
 	if (metric==true)
 		metric=false;
 	else
+	{
 		metric=true;
+	}
+	sessionStorage.setItem('metric', metric);
+	document.getElementById("weightLabel").innerHTML = "Weight lifted" + display1RMLabel() + ":";
 }
+
+function changeSystemBMI(){
+	if (metric==true)
+		metric=false;
+	else
+	{
+		metric=true;
+	}
+	sessionStorage.setItem('metric', metric);
+	document.getElementById("bmiLabel").innerHTML = "Weight" + displayBMILabel() + ":";
+	document.getElementById("bmiLabel1").innerHTML = "Height" + displayBMILabel1() + ":";
+}
+
+function display1RMLabel(){
+	if (sessionStorage.getItem('metric')==='true')
+		return "(kgs)";
+	else
+		return "(lbs)";
+}
+
+function displayBMILabel(){
+	if (sessionStorage.getItem('metric')==='true')
+		return "(kgs)";
+	else
+		return "(lbs)";
+}
+
+function displayBMILabel1(){
+	if (sessionStorage.getItem('metric')==='true')
+		return "(cm)";
+	else
+		return "(in)";
+}
+
 
 function calculate1RM(bool) { //metric:true/false
 	onerepmaxweight=document.getElementById("1rmform").elements[0].value;
 	reps=document.getElementById("1rmform").elements[1].value;
-
+	if (reps==1)
+		return onerepmaxweight;
 	if (bool==true) //metric 1rm
 	{
 		return getMaxRep(reps, onerepmaxweight);
@@ -29,7 +68,6 @@ function calculate1RM(bool) { //metric:true/false
 function calculateBMI(bool) { //metric:true/false
 	bmiweight=document.getElementById("bmiform").elements[0].value;
 	bmiheight=document.getElementById("bmiform").elements[1].value;
-
 	if (bool==true) //metric bmi
 	{//if not -1 else error
 		return getBMI(bmiheight, bmiweight);
@@ -38,7 +76,7 @@ function calculateBMI(bool) { //metric:true/false
 	{
 		return getBMI(convertToCm(bmiheight), convertToKgs(bmiweight));
 
-	} //display what group you are in (normal, underweight, overweight) maybe show chart comparing ppl with ur height, use colors like green for good red for bad
+	} 
 	//else //errors?
 }
 
@@ -90,33 +128,29 @@ function submitBMI() {
 	sessionStorage.setItem('result', result);
 }
 
+x=false;
+unit='error';
+
 function submit1RM() {
-	maxresult=calculate1RM(metric);
+	if (sessionStorage.getItem('metric')==="true")
+		x = true;
+	else
+		x = false;
+
+	if (x==true)
+		unit= "kilograms";
+	else
+		unit= "pounds";
+
+	maxresult=calculate1RM(x) + " " + unit;
 	sessionStorage.setItem('maxresult', maxresult);
-	hide("1RM");
 	show("ONERMresult");
 }
 
 function show(id) {
-	document.getElementById(id).style.visibility='visible';
+	document.getElementById(id).style.display='block';
 }
 
 function hide(id) {
-	document.getElementById(id).style.visibility='hidden';
-}
-
-function displayHeightUnit()
-{
-	if (metric)
-		return "meters";
-	else
-		return "inches";
-}
-
-function displayWeightUnit()
-{
-	if (metric)
-		return "kilograms";
-	else
-		return "pounds";
+	document.getElementById(id).style.display='none';
 }

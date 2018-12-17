@@ -7,8 +7,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Racing+Sans+One" rel="stylesheet">
 	<meta name="viewport" content="width=device-width">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-	<title>1 Rep Max</title>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+	 crossorigin="anonymous"></script>
+	<title>LIGMA</title>
 	<link href="calculators.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="HomeScreen.css">
 	<script src="UIlogic.js"></script>
@@ -18,41 +19,41 @@
 <body>
 	<span id="open" onclick="openNav()">&equiv;</span>
 	<p id="1RM">
-	<script src="script.js"></script>
+		<script src="script.js"></script>
 
-	Metric:<br>
-	<label class="switch">
-		<input type="checkbox" onclick="changeSystem();">
-		<span class="slider round"></span>
-	</label>
+		<div id="metricHeader" class="formlabels">Metric:</div>
+		<label class="switch">
+			<input type="checkbox" onclick="changeSystem1RM();">
+			<span class="slider round"></span>
+		</label> <br><br>
 
-	<form id="1rmform" onsubmit="submit1RM();">
-		Weight lifted:<br>
-		<input type="text" name="1RMweight" autocomplete="off"><br><br>
-		Repetitions: <br>
-		<input type="text" name="reps" autocomplete="off">
-		<img id="light" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/light-bulb-icon.png">
-		Tip! Input less than 10 reps for most accurate results. <br><br>
-		<input type="submit" value="Calculate" id="calc0">
-	</form>
-</p>
+		<form id="1rmform" onsubmit="submit1RM();">
+			<div id="weightLabel" class="formlabels">Weight lifted(lbs):</div>
+			<input type="text" name="1RMweight" autocomplete="off"><br><br>
+			<div class="formlabels">Repetitions: </div>
+			<div style="color:#7c0000; font-weight: bolder">
+				<input type="text" name="reps" autocomplete="off">
+				<img id="light" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/light-bulb-icon.png">
+				Tip! Input less than 10 reps for most accurate results.
+			</div><br><br>
+			<input type="submit" value="Calculate" id="calc0">
+		</form>
+	</p>
 
-<div id="ONERMresult">
-	<script src="script.js"></script>
-	Your estimated max is:
-	<script>
-		document.write(sessionStorage.getItem('maxresult') + " ");
-		document.write(displayWeightUnit()); //might have var dumping probs
-	</script>
-</div>
+	<div id="ONERMresult">
+		<script>
+			if ('maxresult' in sessionStorage)
+				document.write('Your estimated max is: ' + sessionStorage.getItem('maxresult') + " ");
+		</script>
+	</div>
 
-<div id="mySidenav" class="sidenav">
-	<link rel="stylesheet" href="HomeScreen.css">
-	<script src="UIlogic.js"></script>
-	<a id="closebtn" onclick="closeNav()">&times;</a>
-	<a href="../index.html">Home</a>
-	<a href="index.html">Calculators</a>
-</div>
+	<div id="mySidenav" class="sidenav">
+		<link rel="stylesheet" href="HomeScreen.css">
+		<script src="UIlogic.js"></script>
+		<a id="closebtn" onclick="closeNav()">&times;</a>
+		<a href="../HomeScreen.html">Home</a>
+		<a href="index.html">Calculators</a>
+	</div>
 </body>
 
 </html>
