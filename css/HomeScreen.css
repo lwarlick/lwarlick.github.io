@@ -2,15 +2,6 @@
   display: none;
 }
 
-#mike {
-  width:100px;
-  height:110px;
-  position: absolute;
-  top: 70px;
-  left: 184px;
-  z-index: 15;
-}
-
 body {
   opacity: 100%;
   margin-left: 0px;
