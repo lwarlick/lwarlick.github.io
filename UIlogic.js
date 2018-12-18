@@ -1250,7 +1250,7 @@ var deadlift = {
   name:"Deadlift", 
   intensity: "Medium",
   primaryMusclesWorked:["Gluteus"], 
-  secondaryMusclesWorked:["Abdominals","Latissimus", "Trapezius", "Hamstrings", "Gastrocnemius", "Tibialis"],
+  secondaryMusclesWorked:["Abdominals","Latissimus", "Trapezius", "Hamstrings", "Gastrocnemius", "Tibialis","Adductors"],
   generateAptitude: function() {
     var primaryScore = 0;
     var secondaryScore = 0;
@@ -1272,7 +1272,7 @@ var squat = {
   name:"Squat", 
   intensity: "Medium",
   primaryMusclesWorked:["Gluteus"], 
-  secondaryMusclesWorked:["Hamstrings", "Gastrocnemius"],
+  secondaryMusclesWorked:["Hamstrings", "Gastrocnemius","Adductors"],
   generateAptitude: function() {
     var primaryScore = 0;
     var secondaryScore = 0;
